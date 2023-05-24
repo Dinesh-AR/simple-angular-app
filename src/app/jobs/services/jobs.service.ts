@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { Job } from '../model/job';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Job } from '../model/job';
 export class JobsService {
   constructor(private http: HttpClient) {}
   findAllJobs(): Observable<Job[]> {
-    return this.http.get<Job[]>('/api/jobs');
+    return this.http.get<Job[]>('/api/jobs').pipe(shareReplay());
   }
   findJobById(jobId: number): Observable<Job> {
     return this.http.get<Job>(`/api/jobs/${jobId}`);
@@ -17,7 +17,7 @@ export class JobsService {
   createJob(newJob: Job): Observable<Job> {
     return this.http.post<Job>('/api/jobs', newJob);
   }
-  updateJob(jobId: number, updates: Job): Observable<Job> {
+  updateJob(jobId: number, updates: Partial<Job>): Observable<Job> {
     return this.http.put<Job>(`/api/jobs/${jobId}`, updates);
   }
 

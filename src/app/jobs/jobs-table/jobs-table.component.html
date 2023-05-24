@@ -1,1 +1,23 @@
 <p>jobs-table works!</p>
+<table class="table table-striped table-hover table-bordered " *ngIf="(jobs$ | async) as jobs">
+    <thead>
+        <tr>
+            <td class="col">Job Number</td>
+            <td class="col">Job Title</td>
+            <td class="col">Job Start Date</td>
+            <td class="col">Job End Date</td>
+            <td class="col">Experience Required</td>
+            <td class="col">Number of Openings</td>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        <tr *ngFor="let job of jobs">
+            <td class="col">{{job.job_number}}</td>
+            <td class="col">{{job.job_title}}</td>
+            <td class="col">{{job.job_start_date | date:'longDate'}}</td>
+            <td class="col">{{job.job_close_date | date:'longDate'}}</td>
+            <td class="col">{{job.experience_required ? "Yes" : "No"}}</td>
+            <td class="col">{{job.number_of_openings}}</td>
+        </tr>
+    </tbody>
+</table>
