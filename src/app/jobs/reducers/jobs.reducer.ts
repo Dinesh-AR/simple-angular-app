@@ -7,9 +7,7 @@ export interface JobsState extends EntityState<Job> {}
 
 const selectId = (entity: Job) => entity.id;
 
-export const adaptor = createEntityAdapter<Job>({
-  selectId: selectId,
-});
+export const adaptor = createEntityAdapter<Job>();
 
 export const initialJobsState = adaptor.getInitialState();
 
@@ -26,4 +24,4 @@ export const jobsReducer = createReducer(
   )
 );
 
-export const { selectAll } = adaptor.getSelectors();
+export const { selectAll, selectEntities } = adaptor.getSelectors();

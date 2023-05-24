@@ -11,6 +11,7 @@ import { JobsEffects } from './jobs.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { jobsReducer } from './reducers/jobs.reducer';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [JobsTableComponent, EditJobComponent],
@@ -18,6 +19,8 @@ import { jobsReducer } from './reducers/jobs.reducer';
     CommonModule,
     JobsRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     EffectsModule.forFeature([JobsEffects]),
     StoreModule.forFeature('jobs', jobsReducer),
   ],

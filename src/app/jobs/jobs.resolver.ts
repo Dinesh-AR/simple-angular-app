@@ -4,10 +4,11 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { AppState } from '../reducers';
-import { Store } from '@ngrx/store';
-import { Observable, finalize, first, tap } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { Observable, filter, finalize, first, tap } from 'rxjs';
 import { loadAllJobs } from './jobs.actions';
 import { Injectable } from '@angular/core';
+import { selectAllJobs } from './jobs.selectors';
 
 @Injectable()
 export class JobsResolver implements Resolve<any> {

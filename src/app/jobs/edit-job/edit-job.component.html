@@ -1,1 +1,52 @@
-<p>edit-job works!</p>
+<form [formGroup]="jobForm" (ngSubmit)="submitForm()">
+    <div class="row">
+        <div class="col">
+            <label for="job_number">Job Number</label>
+            <input type="text" class="form-control" id="job_number" formControlName="job_number"
+                [readonly]="mode === 'edit' ? true : false" [disabled]="mode === 'edit' ? true : false" />
+        </div>
+
+        <div class="col">
+            <label for="job_title">Job Title</label>
+            <input type="text" class="form-control" id="job_title" formControlName="job_title" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label for="job_start_date">Job Start Date</label>
+            <input type="date" class="form-control" id="job_start_date" formControlName="job_start_date" />
+        </div>
+
+        <div class="col">
+            <label for="job_close_date">Job Close Date</label>
+            <input type="date" class="form-control" id="job_close_date" formControlName="job_close_date" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label for="number_of_openings">Number of Openings</label>
+            <input type="number" class="form-control" id="number_of_openings" formControlName="number_of_openings" />
+        </div>
+        <div class="col d-flex align-items-end">
+            <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="experience_required"
+                    formControlName="experience_required" />
+                <label class="form-check-label" for="experience_required">Experience Required</label>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="job_notes">Job Notes</label>
+            <textarea class="form-control" id="job_notes" formControlName="job_notes"></textarea>
+        </div>
+    </div>
+    <div class="float-end">
+        <button type="submit" class="btn btn-primary me-4">{{mode === 'edit' ? 'Update' :'Submit'}}</button>
+        <button type="button" class="btn btn-secondary me-4" (click)="onCancel()">Cancel</button>
+    </div>
+</form>
